@@ -1,9 +1,21 @@
-# DecibelDefense
-LydianMelody's protype for a musical tower defense game where towers create layered music as they defend against waves of enemies.
+# Decibel Defense
+
+A musical tower defense game where towers create layered music as they defend against waves of enemies.
 
 ## Concept
 
 Decibel Defense combines tower defense gameplay with musical creation, similar to "My Singing Monsters." Each tower is represented by a cute creature that contributes a unique musical element to the overall soundtrack. As players strategically place towers to defend against enemy waves, they're simultaneously composing an evolving musical piece.
+
+## Development Roadmap
+
+- [x] Starter code/structure
+- [ ] Write and record audio loops
+- [ ] Prototype character/enemy design
+- [ ] Create audio layering system for pygame
+- [ ] Design creative mode
+- [ ] Design Tower Defense gameplay
+- [ ] Use prototype to show VRChat developers and musicians to join the project
+- [ ] VRChat implementation
 
 ## Features
 
@@ -72,14 +84,18 @@ To add custom sound loops:
 3. Ensure loops are the same length and properly aligned for seamless layering
 4. Update the `SOUND_MAPPINGS` in `audio_manager.py` to reference your new files
 
-## Development Roadmap
+### Audio Synchronization
 
-- [x] Basic gameplay prototype
-- [ ] Complete audio layering system
-- [ ] Custom character designs
-- [ ] Additional tower types and enemy types
-- [ ] Creative mode
-- [ ] VRChat implementation
+Perfect synchronization between audio loops is critical for this musical tower defense system:
+
+- All loops must have identical lengths (in beats and seconds)
+- Audio files should be carefully quantized to ensure beats align perfectly
+- BPM (tempo) must be consistent across all audio tracks
+- Consider using a DAW (Digital Audio Workstation) to create perfectly synchronized stems
+- The game uses channel-based mixing with synchronized playback start times
+- For VRChat implementation, extra care will be needed to ensure network-synchronized audio
+
+
 
 ## Credits
 
