@@ -23,7 +23,7 @@ Decibel Defense combines tower defense gameplay with musical creation, similar t
 - **Rhythmic Combat**: Towers attack in sync with the music
 - **Wave Progression**: Increasingly difficult enemy waves that match musical intensity
 - **Harmony System**: Complementary towers placed together create bonus effects
-- **Creative Mode**: Create music without enemies (planned feature)
+- **Creative Mode**: Create music without enemies
 
 ## Getting Started
 
