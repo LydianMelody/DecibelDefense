@@ -99,9 +99,9 @@ Perfect synchronization between audio loops is critical for this musical tower d
 
 ## Credits
 
-- Game Concept: [Your Name]
-- Programming: [Your Name]
-- Audio: [Your Name and Contributors]
+- Game Concept: [LydianMelody]
+- Programming: [LydianMelody]
+- Audio: [LydianMelody]
 
 ## License
 
