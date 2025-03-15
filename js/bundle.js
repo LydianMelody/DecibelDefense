@@ -2305,6 +2305,12 @@ class Game {
             this.lastLoggedScale = scale;
         }
         
+        // Draw version text in top-left corner
+        this.ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+        this.ctx.font = '12px Arial';
+        this.ctx.textAlign = 'left';
+        this.ctx.fillText('Pre-Alpha Version 0.2.0', 10, 15);
+        
         // Draw background effects
         this.drawBackground();
         
