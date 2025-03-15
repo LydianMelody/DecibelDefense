@@ -1,14 +1,20 @@
 # Decibel Defense
 
-A musical tower defense game where towers create layered music as they defend against waves of enemies.
+A musical tower defense prototype exploring gameplay ideas for a future full-fledged project.
 
 ## Play Online
 
 **[Play Decibel Defense Now](https://lydianmelody.github.io/DecibelDefense/)**
 
+## Concept
+
+Decibel Defense combines tower defense gameplay with musical creation, similar to "My Singing Monsters." Each tower will be represented by a cute creature that contributes a unique musical element to the overall soundtrack. As players strategically place towers to defend against enemy waves, they're simultaneously composing an evolving musical piece.
+
+Each level in the game will feature a unique song, setting the musical theme and tempo. Each creature maintains its characteristic instrument but will perform different loops depending on the stage.
+
 ## Overview
 
-This is the HTML5 version of Decibel Defense. Each tower contributes a unique musical element to the overall soundtrack. As you place towers strategically to defend against enemy waves, you're simultaneously composing an evolving musical piece.
+This is an HTML5 prototype exploring the gameplay concepts of Decibel Defense. It is not a complete game but rather a technical demonstration to test core mechanics. Each tower contributes a unique musical element to the overall soundtrack, allowing players to experiment with different musical combinations.
 
 **Version**: 0.2.0 (Pre-Alpha)
 
@@ -84,8 +90,18 @@ DecibelDefense/
 
 ## Development
 
-To make changes to the game:
+This prototype is intended to test and refine gameplay mechanics that may be incorporated into a full game in the future. It serves as a technical proof of concept and not as a finished product.
+
+To make changes to the prototype:
 
 1. Edit the JavaScript files in the `js/` directory
 2. Refresh the browser to see changes
 3. Check the browser console for debug information
+
+### Future Development Goals
+
+- Create unique creature designs for each tower type
+- Implement more sophisticated audio layering
+- Add level progression with different musical themes
+- Build a fully-featured musical tower defense game
+- Potentially port to other platforms beyond the web
