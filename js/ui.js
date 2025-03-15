@@ -207,6 +207,9 @@ class UI {
         // Update wave display
         this.waveElement.textContent = `Wave: ${this.game.wave}`;
         
+        // Add version to wave display
+        this.waveElement.title = "Pre-Alpha Version 0.2.0";
+        
         // Update pause button
         this.updatePauseButton();
         

@@ -318,11 +318,16 @@ class Game {
             this.lastLoggedScale = scale;
         }
         
-        // Draw version text in top-left corner
-        this.ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
-        this.ctx.font = '12px Arial';
+        // Draw version text in top-left corner with improved visibility
+        this.ctx.fillStyle = 'rgba(255, 255, 255, 0.8)'; // Increased opacity for better visibility
+        this.ctx.font = 'bold 14px Arial'; // Make text bold and slightly larger
         this.ctx.textAlign = 'left';
-        this.ctx.fillText('Pre-Alpha Version 0.2.0', 10, 15);
+        this.ctx.fillText('Pre-Alpha Version 0.2.0', 10, 20);
+        
+        // Draw a darker outline for better contrast
+        this.ctx.strokeStyle = 'rgba(0, 0, 0, 0.5)';
+        this.ctx.lineWidth = 2;
+        this.ctx.strokeText('Pre-Alpha Version 0.2.0', 10, 20);
         
         // Draw background effects
         this.drawBackground();
