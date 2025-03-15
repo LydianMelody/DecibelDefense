@@ -39,6 +39,11 @@ jobs:
         uses: actions/configure-pages@v4
         with:
           enablement: true
+      - name: Run build script
+        run: |
+          chmod +x ./build.sh
+          ./build.sh
+          
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
