@@ -74,8 +74,8 @@ class Enemy {
         this.reachedEnd = false;
         this.isDead = false;
         
-        // Visual properties
-        this.color = '#00FF7F'; // Brighter green for better visibility
+        // Visual properties - colors that work on light background
+        this.color = '#FF7BAC'; // Bright pink for enemies - visible on light background
         this.size = CONFIG.TILE_SIZE / 3;
         this.animationFrame = 0;
         this.hitEffects = []; // For visual hit effects

@@ -8,6 +8,9 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#222222">
     <title>Decibel Defense</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Sniglet:wght@400;800&family=Baloo+2:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <!-- Using a single bundled script to avoid dependency issues -->
     <script src="js/bundle.js"></script>
@@ -18,9 +21,9 @@
 </head>
 <body>
     <div id="game-container">
-        <!-- Version indicator directly in HTML -->
-        <div id="version-indicator" style="position: absolute; top: 5px; left: 5px; color: white; font-size: 12px; font-weight: bold; text-shadow: 1px 1px 2px black; z-index: 999;">
-            Pre-Alpha Version 0.2.0
+        <!-- Version indicator directly in HTML - cute style -->
+        <div id="version-indicator" style="position: absolute; top: 5px; left: 5px; color: #FF66AA; font-family: 'Bubblegum Sans', cursive; font-size: 16px; letter-spacing: 0.5px; text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7); z-index: 999; background-color: rgba(255, 255, 255, 0.4); padding: 4px 12px; border-radius: 20px;">
+            ✨💖 Pre-Alpha v0.2.0 💖✨
         </div>
         
         <!-- Game canvas area -->
@@ -33,7 +36,7 @@
             <!-- Game header with stats -->
             <div id="game-header">
                 <div class="game-title">
-                    <h1>Decibel Defense <span style="font-size: 14px; color: #8bff8b;">v0.2.0-alpha</span></h1>
+                    <h1>Decibel Defense <span style="font-family: 'Baloo 2', cursive; font-size: 14px; color: #FF99CC;">v0.2.0-alpha</span></h1>
                 </div>
                 <div id="game-info">
                     <p id="money">Money: INFINITE</p>

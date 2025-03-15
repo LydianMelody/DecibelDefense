@@ -28,10 +28,10 @@ const CONFIG = {
     STARTING_MONEY: 999999, // Infinite money for testing
     STARTING_LIVES: 10,
     
-    // Tower types
+    // Tower types - pastel colors for cute softgirl aesthetic
     TOWER_TYPES: {
         'drums': {
-            color: '#FF0000',
+            color: '#FFB6C1', // Pastel pink
             range: 2,
             damage: 10,
             fireRate: 1.0, // attacks per second
@@ -40,7 +40,7 @@ const CONFIG = {
             description: 'Fast attack rate, moderate damage'
         },
         'bass': {
-            color: '#0000FF',
+            color: '#B6DCFF', // Pastel blue
             range: 3,
             damage: 15,
             fireRate: 0.5,
@@ -49,7 +49,7 @@ const CONFIG = {
             description: 'Medium range, good damage'
         },
         'heavy_guitar': {
-            color: '#FFFF00',
+            color: '#FFFFC2', // Pastel yellow
             range: 4,
             damage: 10,  // Reduced to half
             fireRate: 1.5,  // Doubled fire rate
@@ -58,7 +58,7 @@ const CONFIG = {
             description: 'Long range, rapid-fire attacks'
         },
         'wiggly_guitar': {
-            color: '#800080',
+            color: '#E1C4FF', // Pastel purple
             range: 5,
             damage: 25,
             fireRate: 0.5,
@@ -67,7 +67,7 @@ const CONFIG = {
             description: 'Very long range, very high damage'
         },
         'synth1': {
-            color: '#00FF7F',
+            color: '#C1FFD7', // Pastel mint
             range: 4,
             damage: 30,
             fireRate: 0.4,
@@ -76,7 +76,7 @@ const CONFIG = {
             description: 'High damage, slow fire rate'
         },
         'synth2': {
-            color: '#FF7F00',
+            color: '#FFD8B6', // Pastel orange
             range: 3,
             damage: 18,
             fireRate: 0.6,
@@ -85,7 +85,7 @@ const CONFIG = {
             description: 'Special effects, area damage'
         },
         'synth_stabs': {
-            color: '#00C8C8',
+            color: '#B6FFFD', // Pastel cyan
             range: 6,
             damage: 15,  // Increased base damage
             fireRate: 0.3,

@@ -8,18 +8,18 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #222;
-    color: white;
+    font-family: 'Baloo 2', 'Segoe UI', Arial, sans-serif;
+    background-color: #FFF0F5; /* Lavender blush */
+    color: #5D5D5D; /* Soft dark gray for better contrast */
     width: 100%;
     height: 100%;
     overscroll-behavior: none; /* Prevent pull-to-refresh */
 }
 
 html, body {
-    font-family: Arial, sans-serif;
-    background-color: #222;
-    color: white;
+    font-family: 'Baloo 2', 'Segoe UI', Arial, sans-serif;
+    background-color: #FFF0F5; /* Lavender blush */
+    color: #5D5D5D; /* Soft dark gray for better contrast */
     overflow: hidden;
     height: 100%;
     width: 100%;
@@ -177,6 +177,7 @@ button,
     cursor: pointer;
     min-height: 44px; /* Minimum touch target size */
     min-width: 44px; /* Minimum touch target size */
+    font-family: 'Baloo 2', cursive; /* Apply our playful font to all buttons */
 }
 
 /* Main game container */
@@ -197,7 +198,7 @@ button,
 /* Canvas container - takes up remaining width */
 #canvas-container {
     flex: 1; /* Take up all available space */
-    background-color: #000;
+    background-color: #FFE6F0; /* Very light pink background */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -210,25 +211,27 @@ button,
 /* Game canvas - maintains aspect ratio */
 #game-canvas {
     display: block;
-    background-color: #000;
+    background-color: #FFF0F5; /* Light pink/lavender blush */
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
     image-rendering: pixelated; /* Crisp pixel rendering */
     margin: 0 auto; /* Center horizontally */
+    border-radius: 8px; /* Slightly rounded corners */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15); /* Subtle shadow */
 }
 
-/* UI Container - now on the right side */
+/* UI Container - now on the right side - pastel theme */
 #ui-container {
     width: 330px; /* Fixed width that works well */
-    background-color: rgba(28, 28, 30, 0.95); /* Darker, slightly transparent */
+    background-color: rgba(245, 222, 239, 0.95); /* Soft pink background */
     padding: 12px;
     z-index: 10;
     display: flex;
     flex-direction: column;
     height: 100vh; /* Full height */
-    box-shadow: -8px 0 16px rgba(0, 0, 0, 0.5); /* Shadow on left side */
-    border-left: 2px solid #4CAF50; /* Green accent border */
+    box-shadow: -8px 0 16px rgba(219, 183, 213, 0.6); /* Soft shadow */
+    border-left: 2px solid #E8AED9; /* Pastel pink border */
 }
 
 /* Game header with title and info */
@@ -250,11 +253,12 @@ button,
 }
 
 #game-header h1 {
-    font-size: 22px;
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 24px;
     margin: 0;
-    color: #4CAF50; /* Green title to match game theme */
-    font-weight: bold;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); /* Text shadow for depth */
+    color: #FF66AA; /* Pink title to match game theme */
+    font-weight: normal; /* Bubblegum Sans looks best in its regular weight */
+    text-shadow: 2px 2px 0px rgba(255, 182, 193, 0.7); /* Playful text shadow */
     letter-spacing: 1px; /* Slightly spaced letters */
 }
 
@@ -271,6 +275,7 @@ button,
 #game-info p {
     margin: 0;
     font-size: 16px;
+    font-family: 'Baloo 2', cursive;
     font-weight: 600;
     text-align: center;
 }
@@ -320,19 +325,20 @@ button,
 }
 
 #tower-selection h2 {
-    font-size: 16px;
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 18px;
     margin: 0 0 8px;
     position: sticky;
     top: 0;
     background-color: rgba(28, 28, 30, 0.95);
     padding: 5px 0;
     z-index: 10;
-    color: #4CAF50;
-    font-weight: bold;
+    color: #FF66AA;
+    font-weight: normal;
     text-transform: uppercase;
     letter-spacing: 1px;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-    border-bottom: 1px solid rgba(76, 175, 80, 0.3);
+    text-shadow: 1px 1px 0px rgba(255, 182, 193, 0.5);
+    border-bottom: 1px solid rgba(255, 182, 193, 0.5);
     text-align: center;
 }
 
@@ -360,7 +366,8 @@ button,
     border-radius: 6px;
     padding: 8px 12px;
     font-size: 15px;
-    font-weight: 600;
+    font-family: 'Bubblegum Sans', cursive;
+    font-weight: normal;
     cursor: pointer;
     transition: all 0.2s ease;
     flex: 1; /* Flex grow to take up available space */
@@ -373,23 +380,27 @@ button,
 }
 
 #pause-btn {
-    background-color: #2196F3; /* Blue for pause */
+    background-color: #A1CFE8; /* Pastel blue for pause */
+    color: #5D5D5D; /* Darker text for contrast */
+    border-radius: 20px; /* Very round buttons */
 }
 
 #pause-btn:hover {
-    background-color: #42a5f5;
+    background-color: #B9E1F7; /* Lighter blue on hover */
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 8px rgba(161, 207, 232, 0.7);
 }
 
 #restart-sidebar-btn {
-    background-color: #f44336; /* Red for restart */
+    background-color: #FFAFCC; /* Pastel pink for restart */
+    color: #5D5D5D; /* Darker text for contrast */
+    border-radius: 20px; /* Very round buttons */
 }
 
 #restart-sidebar-btn:hover {
-    background-color: #ff5c52;
+    background-color: #FFBFDA; /* Lighter pink on hover */
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 8px rgba(255, 175, 204, 0.7);
 }
 
 /* Tower buttons */
@@ -404,31 +415,31 @@ button,
 
 .tower-button {
     display: flex;
-    background-color: rgba(40, 40, 45, 0.8);
-    border: 2px solid rgba(120, 120, 120, 0.3);
-    border-radius: 8px;
+    background-color: rgba(244, 232, 250, 0.9); /* Soft lavender */
+    border: 2px solid rgba(222, 184, 226, 0.6); /* Soft purple border */
+    border-radius: 16px; /* Rounder corners for softer look */
     padding: 6px;
     cursor: pointer;
     transition: all 0.2s;
     height: 50px;
     width: 100%; /* Full width in grid cell */
     position: relative;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 6px rgba(205, 156, 200, 0.3); /* Soft shadow */
     align-items: center;
     margin-bottom: 0; /* Grid handles spacing */
     overflow: hidden; /* Hide overflow content */
 }
 
 .tower-button:hover {
-    background-color: rgba(60, 60, 65, 0.9);
+    background-color: rgba(250, 234, 255, 0.95); /* Lighter on hover */
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 5px 10px rgba(214, 178, 226, 0.4); /* Larger shadow on hover */
 }
 
 .tower-button.selected {
-    background-color: rgba(76, 175, 80, 0.3);
-    border-color: #4CAF50;
-    box-shadow: 0 0 8px rgba(76, 175, 80, 0.8);
+    background-color: rgba(235, 186, 235, 0.7); /* Pastel pink when selected */
+    border-color: #EBA8EB; /* Stronger pink border when selected */
+    box-shadow: 0 0 12px rgba(235, 168, 235, 0.7); /* Pink glow when selected */
 }
 
 .tower-info {
@@ -441,19 +452,21 @@ button,
 }
 
 .tower-name {
-    font-weight: bold;
+    font-family: 'Baloo 2', cursive;
+    font-weight: 600;
     margin-bottom: 4px;
     font-size: 14px;
-    color: #fff;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    color: #7D6B7D; /* Soft purple for text */
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5); /* White shadow for softness */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .tower-cost {
+    font-family: 'Baloo 2', cursive;
     font-size: 13px;
-    color: #FFD700; /* Gold color for cost */
+    color: #E8A87B; /* Soft peach for cost */
     font-weight: 600;
     white-space: nowrap;
 }
@@ -464,8 +477,8 @@ button,
     height: 36px;
     border-radius: 50%;
     margin-left: 6px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 12px rgba(255, 198, 255, 0.6); /* Soft pink glow */
+    border: 3px solid rgba(255, 255, 255, 0.8); /* Thicker white border for cuteness */
     flex-shrink: 0; /* Prevent shrinking */
 }
 
@@ -473,11 +486,11 @@ button,
 .button-group {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Two columns for buttons */
-    gap: 10px;
+    gap: 15px;
     width: 100%;
-    margin-top: 12px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 12px;
+    margin-top: 15px;
+    border-top: 2px dotted rgba(218, 169, 218, 0.5); /* Dotted pastel purple line */
+    padding-top: 15px;
 }
 
 #next-wave-btn, #test-enemy-btn {
@@ -501,37 +514,51 @@ button,
 }
 
 #next-wave-btn {
-    background-color: #4CAF50; /* Green */
+    background-color: #A8E4B5; /* Pastel mint green */
     grid-column: span 2; /* Make next wave button span both columns */
+    border-radius: 20px; /* Cute rounded buttons */
+    color: #333; /* Darker text for better contrast */
+    box-shadow: 0 4px 0 rgba(138, 198, 149, 0.8); /* Matching shadow */
+    font-family: 'Bubblegum Sans', cursive;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+    font-size: 17px;
 }
 
 #next-wave-btn:hover {
-    background-color: #5bc15e;
+    background-color: #BCF5C9; /* Lighter mint on hover */
     transform: translateY(-2px);
-    box-shadow: 0 6px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 0 rgba(138, 198, 149, 0.8);
 }
 
 #next-wave-btn:active {
-    background-color: #43A047;
+    background-color: #9DD5AA;
     transform: translateY(2px);
-    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 3px 0 rgba(138, 198, 149, 0.8);
 }
 
 #test-enemy-btn {
-    background-color: #2196F3; /* Blue */
+    background-color: #FFC6E5; /* Pastel pink */
     grid-column: span 2; /* Make test enemy button span both columns */
+    border-radius: 20px; /* Cute rounded buttons */
+    color: #333; /* Darker text for better contrast */
+    box-shadow: 0 4px 0 rgba(230, 151, 196, 0.8); /* Matching shadow */
+    font-family: 'Bubblegum Sans', cursive;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+    font-size: 17px;
 }
 
 #test-enemy-btn:hover {
-    background-color: #42a5f5;
+    background-color: #FFD8ED; /* Lighter pink on hover */
     transform: translateY(-2px);
-    box-shadow: 0 6px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 0 rgba(230, 151, 196, 0.8);
 }
 
 #test-enemy-btn:active {
-    background-color: #1976D2;
+    background-color: #F6BAD9;
     transform: translateY(2px);
-    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 3px 0 rgba(230, 151, 196, 0.8);
 }
 
 #test-enemy-btn:hover {
@@ -604,32 +631,48 @@ button:active,
 }
 
 #game-over h1 {
+    font-family: 'Sniglet', cursive;
+    font-weight: 800;
     font-size: 72px;
-    color: #f00;
+    color: #FF3366;
     margin-bottom: 30px;
+    text-shadow: 3px 3px 0px #FF99CC, 6px 6px 0px rgba(255, 102, 102, 0.5);
+    letter-spacing: 2px;
 }
 
 #game-over p {
-    font-size: 24px;
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 28px;
     color: #fff;
     margin-bottom: 30px;
+    text-shadow: 1px 1px 0px #FF6666;
 }
 
 #restart-btn {
-    background-color: #f44336;
+    background-color: #FF6666;
     color: white;
-    border: 2px solid #fff;
-    border-radius: 8px;
-    padding: 15px 30px;
-    font-size: 24px;
-    font-weight: bold;
+    border: 3px solid #fff;
+    border-radius: 50px;
+    padding: 15px 40px;
+    font-size: 28px;
+    font-family: 'Sniglet', cursive;
+    font-weight: normal;
     cursor: pointer;
     transition: all 0.2s;
+    box-shadow: 0 6px 0 rgba(255, 102, 102, 0.5);
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+    letter-spacing: 1px;
 }
 
 #restart-btn:hover {
-    background-color: #ff5c52;
-    transform: scale(1.05);
+    background-color: #FF8080;
+    transform: translateY(-3px);
+    box-shadow: 0 9px 0 rgba(255, 102, 102, 0.5);
+}
+
+#restart-btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 3px 0 rgba(255, 102, 102, 0.5);
 }
 
 .hidden {
@@ -652,31 +695,45 @@ button:active,
 }
 
 #start-screen h1 {
+    font-family: 'Sniglet', cursive;
     font-size: 72px;
-    color: #4CAF50;
+    color: #FF66AA;
     margin-bottom: 30px;
-    text-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+    text-shadow: 3px 3px 0px #FF99CC, 6px 6px 0px rgba(255, 182, 193, 0.5);
+    letter-spacing: 2px;
 }
 
 #start-screen p {
-    font-size: 24px;
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 28px;
     color: #fff;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 0px #FF99CC;
 }
 
 #start-game-btn {
-    background-color: #4CAF50;
+    background-color: #FF66AA;
     color: white;
-    border: 2px solid #fff;
-    border-radius: 8px;
-    padding: 15px 30px;
-    font-size: 24px;
-    font-weight: bold;
+    border: 3px solid #fff;
+    border-radius: 50px;
+    padding: 15px 40px;
+    font-size: 28px;
+    font-family: 'Sniglet', cursive;
+    font-weight: normal;
     cursor: pointer;
     transition: all 0.2s;
+    box-shadow: 0 6px 0 rgba(255, 102, 153, 0.5);
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+    letter-spacing: 1px;
 }
 
 #start-game-btn:hover {
-    background-color: #5bc15e;
-    transform: scale(1.05);
+    background-color: #FF80B8;
+    transform: translateY(-3px);
+    box-shadow: 0 9px 0 rgba(255, 102, 153, 0.5);
+}
+
+#start-game-btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 3px 0 rgba(255, 102, 153, 0.5);
 }

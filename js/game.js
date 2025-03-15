@@ -318,16 +318,16 @@ class Game {
             this.lastLoggedScale = scale;
         }
         
-        // Draw version text in top-left corner with improved visibility
-        this.ctx.fillStyle = 'rgba(255, 255, 255, 0.8)'; // Increased opacity for better visibility
+        // Draw version text in top-left corner with improved visibility and pink theme
+        this.ctx.fillStyle = 'rgba(255, 180, 220, 0.9)'; // Pink color with high opacity
         this.ctx.font = 'bold 14px Arial'; // Make text bold and slightly larger
         this.ctx.textAlign = 'left';
-        this.ctx.fillText('Pre-Alpha Version 0.2.0', 10, 20);
+        this.ctx.fillText('Pre-Alpha Version 0.2.0 ✨', 10, 20);
         
         // Draw a darker outline for better contrast
-        this.ctx.strokeStyle = 'rgba(0, 0, 0, 0.5)';
+        this.ctx.strokeStyle = 'rgba(160, 100, 140, 0.7)';
         this.ctx.lineWidth = 2;
-        this.ctx.strokeText('Pre-Alpha Version 0.2.0', 10, 20);
+        this.ctx.strokeText('Pre-Alpha Version 0.2.0 ✨', 10, 20);
         
         // Draw background effects
         this.drawBackground();
@@ -387,71 +387,43 @@ class Game {
         // Create a grid of visual rhythm points
         this.drawRhythmGrid();
         
-        // Create subtle color pulse based on active towers
-        const pulse = Math.sin(this.frameCounter * 0.05) * 0.5 + 0.5;
-        
-        // Each tower type contributes a color
-        let r = 0, g = 0, b = 0;
-        let activeTowerCount = 0;
-        
-        for (const tower of this.towers) {
-            if (tower.active) {
-                activeTowerCount++;
-                
-                // Convert tower color to RGB and add to color mix
-                let colorRgb = this._hexToRgb(tower.color);
-                r += colorRgb.r / 255;
-                g += colorRgb.g / 255;
-                b += colorRgb.b / 255;
-            }
-        }
-        
-        // Normalize and scale down
-        if (activeTowerCount > 0) {
-            r = (r / activeTowerCount) * 0.25 * pulse;
-            g = (g / activeTowerCount) * 0.25 * pulse;
-            b = (b / activeTowerCount) * 0.25 * pulse;
-        }
-        
+        // Use a static background instead of a pulsing one
         // Calculate the center of the game grid
-        // Using standard grid coordinates since canvas is already scaled
         const gridCenterX = CONFIG.GRID_WIDTH * CONFIG.TILE_SIZE / 2;
         const gridCenterY = CONFIG.GRID_HEIGHT * CONFIG.TILE_SIZE / 2;
         
+        // Create a static gradient for the background
         const gradient = this.ctx.createRadialGradient(
             gridCenterX, gridCenterY, 0,
             gridCenterX, gridCenterY, CONFIG.GRID_WIDTH * CONFIG.TILE_SIZE
         );
         
-        gradient.addColorStop(0, `rgba(${Math.floor(r * 255)}, ${Math.floor(g * 255)}, ${Math.floor(b * 255)}, 0.5)`);
-        gradient.addColorStop(1, 'rgba(0, 0, 0, 0.8)');
+        // Very subtle pink gradient for the background
+        gradient.addColorStop(0, 'rgba(255, 235, 245, 0.3)'); // Soft pink center
+        gradient.addColorStop(1, 'rgba(255, 240, 245, 0.1)'); // Almost transparent pink at edges
         
         this.ctx.fillStyle = gradient;
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
         
-        // Draw rhythmic pulse waves from towers
-        this.drawTowerPulses();
+        // Draw rhythmic pulse waves from towers (only when towers are active)
+        if (this.towers.some(tower => tower.active)) {
+            this.drawTowerPulses();
+        }
     }
     
     /**
      * Draw visual rhythm grid in the background
      */
     drawRhythmGrid() {
-        // Create a pulsating pattern that follows 75 BPM
-        const bpm = 75;
-        const beatsPerSecond = bpm / 60;
-        const beatDuration = 1 / beatsPerSecond;
+        // Commenting out the entire rhythm grid to stop any animation effects
+        // This will make the game path completely static
         
-        // Calculate current beat position
-        const elapsedTime = this.frameCounter / 60; // Approximate seconds
-        const beatPosition = (elapsedTime % beatDuration) / beatDuration;
+        // If you want the dots back, uncomment this code:
+        /*
+        // Use a static dot size
+        const dotSize = 1.5; // Fixed size
         
-        // Ensure dotSize is always positive by using absolute value
-        const dotSizeBase = 1.5; // Base size
-        const dotSizeVariation = 1.0; // Amount it can pulse
-        const dotSize = Math.max(0.5, dotSizeBase + Math.sin(beatPosition * Math.PI * 2) * dotSizeVariation);
-        
-        this.ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+        this.ctx.fillStyle = 'rgba(220, 180, 220, 0.15)'; // Light pink-purple dots
         
         // Draw dots only within the game grid area - with proper grid scaling
         const gridWidth = CONFIG.GRID_WIDTH * CONFIG.TILE_SIZE;
@@ -461,7 +433,7 @@ class Game {
         // Draw dots aligned with the grid cells
         for (let x = 0; x < CONFIG.GRID_WIDTH; x++) {
             for (let y = 0; y < CONFIG.GRID_HEIGHT; y++) {
-                // Calculate dot position at cell center - no offsets in new scaling system
+                // Calculate dot position at cell center
                 const dotX = x * CONFIG.TILE_SIZE + CONFIG.TILE_SIZE/2;
                 const dotY = y * CONFIG.TILE_SIZE + CONFIG.TILE_SIZE/2;
                 
@@ -474,6 +446,7 @@ class Game {
                 }
             }
         }
+        */
     }
     
     /**
@@ -556,9 +529,9 @@ class Game {
         // Draw the path with glow effect - no offset needed with new scaling approach
         this._drawPath(0, 0);
         
-        // Add a green grid overlay to match the screenshot
-        this.ctx.strokeStyle = 'rgba(0, 255, 0, 0.15)';
-        this.ctx.lineWidth = 1;
+        // Add a light blue grid overlay
+        this.ctx.strokeStyle = 'rgba(180, 210, 240, 0.5)'; // Light blue lines with increased opacity
+        this.ctx.lineWidth = 0.7; // Slightly thicker lines for better visibility
         
         // Draw grid with subtle effect
         for (let x = 0; x < CONFIG.GRID_WIDTH; x++) {
@@ -575,17 +548,17 @@ class Game {
                 const isEndpoint = CONFIG.ENDPOINT[0] === x && CONFIG.ENDPOINT[1] === y;
                 
                 if (!isPath && !isEndpoint) {
-                    // Draw subtly animated grid cells
+                    // Draw subtly animated grid cells with pink tint
                     const beatPhase = (this.frameCounter / 120 + (x + y) / 10) % 1;
                     const beatIntensity = Math.sin(beatPhase * Math.PI * 2) * 0.05 + 0.05;
                     
-                    // Draw a grid cell with subtle illumination and green tint
-                    this.ctx.fillStyle = `rgba(20, 40, 30, ${beatIntensity})`;
+                    // Draw a grid cell with subtle pink illumination
+                    this.ctx.fillStyle = `rgba(255, 240, 245, ${beatIntensity})`; // Light pink background
                     this.ctx.fillRect(rect.x, rect.y, rect.width, rect.height);
                 }
                 
-                // Draw grid lines with green tint to match the screenshot
-                this.ctx.strokeStyle = 'rgba(0, 255, 0, 0.15)';
+                // Draw light blue grid lines
+                this.ctx.strokeStyle = 'rgba(180, 210, 240, 0.5)'; // Light blue lines
                 this.ctx.strokeRect(rect.x, rect.y, rect.width, rect.height);
             }
         }
@@ -597,100 +570,55 @@ class Game {
     }
     
     /**
-     * Draw the path with glow effect
+     * Draw the path with solid color (no animation)
      * @param {number} offsetX - X offset for centering
      * @param {number} offsetY - Y offset for centering
      * @private
      */
     _drawPath(offsetX, offsetY) {
-        const pathPoints = [];
-        
-        // Collect path points with the correct offset
-        for (const [x, y] of CONFIG.PATH) {
-            const centerX = offsetX + x * CONFIG.TILE_SIZE + CONFIG.TILE_SIZE / 2;
-            const centerY = offsetY + y * CONFIG.TILE_SIZE + CONFIG.TILE_SIZE / 2;
-            pathPoints.push({ x: centerX, y: centerY });
-        }
-        
-        // Draw glowing path
+        // Fill the entire path with a solid color
         this.ctx.save();
         
-        // Draw path base
-        this.ctx.beginPath();
-        this.ctx.moveTo(pathPoints[0].x, pathPoints[0].y);
-        
-        for (let i = 1; i < pathPoints.length; i++) {
-            this.ctx.lineTo(pathPoints[i].x, pathPoints[i].y);
+        // Create a path for filling (we'll use solid rectangles instead of strokes)
+        for (const [x, y] of CONFIG.PATH) {
+            // Draw a filled rectangle for each path tile
+            this.ctx.fillStyle = 'rgba(230, 200, 230, 0.8)'; // Solid light pink path
+            this.ctx.fillRect(
+                x * CONFIG.TILE_SIZE + 2, 
+                y * CONFIG.TILE_SIZE + 2, 
+                CONFIG.TILE_SIZE - 4, 
+                CONFIG.TILE_SIZE - 4
+            );
+            
+            // Add a subtle border
+            this.ctx.strokeStyle = 'rgba(200, 180, 220, 0.9)';
+            this.ctx.lineWidth = 1;
+            this.ctx.strokeRect(
+                x * CONFIG.TILE_SIZE + 2, 
+                y * CONFIG.TILE_SIZE + 2, 
+                CONFIG.TILE_SIZE - 4, 
+                CONFIG.TILE_SIZE - 4
+            );
         }
         
-        this.ctx.lineWidth = CONFIG.TILE_SIZE * 0.6;
-        this.ctx.strokeStyle = 'rgba(60, 60, 70, 0.7)';
-        this.ctx.lineCap = 'round';
-        this.ctx.lineJoin = 'round';
-        this.ctx.stroke();
+        // Draw start point (entry) - in light blue
+        const [startX, startY] = CONFIG.PATH[0];
+        const startCenterX = startX * CONFIG.TILE_SIZE + CONFIG.TILE_SIZE / 2;
+        const startCenterY = startY * CONFIG.TILE_SIZE + CONFIG.TILE_SIZE / 2;
         
-        // Draw path glow
+        this.ctx.fillStyle = 'rgba(150, 200, 255, 0.9)'; // Solid blue color
         this.ctx.beginPath();
-        this.ctx.moveTo(pathPoints[0].x, pathPoints[0].y);
-        
-        for (let i = 1; i < pathPoints.length; i++) {
-            this.ctx.lineTo(pathPoints[i].x, pathPoints[i].y);
-        }
-        
-        this.ctx.lineWidth = CONFIG.TILE_SIZE * 0.5;
-        
-        // Create animated gradient
-        const gradient = this.ctx.createLinearGradient(
-            pathPoints[0].x, pathPoints[0].y,
-            pathPoints[pathPoints.length - 1].x, pathPoints[pathPoints.length - 1].y
-        );
-        
-        // Animate the gradient based on frame counter
-        const offset = (this.frameCounter % 120) / 120;
-        
-        gradient.addColorStop((0 + offset) % 1, 'rgba(100, 100, 140, 0.2)');
-        gradient.addColorStop((0.25 + offset) % 1, 'rgba(70, 70, 100, 0.5)');
-        gradient.addColorStop((0.5 + offset) % 1, 'rgba(100, 100, 140, 0.2)');
-        gradient.addColorStop((0.75 + offset) % 1, 'rgba(70, 70, 100, 0.5)');
-        gradient.addColorStop((1 + offset) % 1, 'rgba(100, 100, 140, 0.2)');
-        
-        this.ctx.strokeStyle = gradient;
-        this.ctx.stroke();
-        
-        // Draw start point (entry)
-        const startX = pathPoints[0].x;
-        const startY = pathPoints[0].y;
-        
-        this.ctx.beginPath();
-        this.ctx.arc(startX, startY, CONFIG.TILE_SIZE * 0.4, 0, Math.PI * 2);
-        
-        const startGradient = this.ctx.createRadialGradient(
-            startX, startY, 0,
-            startX, startY, CONFIG.TILE_SIZE * 0.4
-        );
-        
-        startGradient.addColorStop(0, 'rgba(0, 255, 0, 0.7)');
-        startGradient.addColorStop(1, 'rgba(0, 100, 0, 0.3)');
-        
-        this.ctx.fillStyle = startGradient;
+        this.ctx.arc(startCenterX, startCenterY, CONFIG.TILE_SIZE * 0.35, 0, Math.PI * 2);
         this.ctx.fill();
         
-        // Draw endpoint (base to defend)
-        const endX = pathPoints[pathPoints.length - 1].x;
-        const endY = pathPoints[pathPoints.length - 1].y;
+        // Draw endpoint (base to defend) - in pink
+        const [endX, endY] = CONFIG.PATH[CONFIG.PATH.length - 1];
+        const endCenterX = endX * CONFIG.TILE_SIZE + CONFIG.TILE_SIZE / 2;
+        const endCenterY = endY * CONFIG.TILE_SIZE + CONFIG.TILE_SIZE / 2;
         
+        this.ctx.fillStyle = 'rgba(255, 140, 200, 0.9)'; // Solid pink color
         this.ctx.beginPath();
-        this.ctx.arc(endX, endY, CONFIG.TILE_SIZE * 0.4, 0, Math.PI * 2);
-        
-        const endGradient = this.ctx.createRadialGradient(
-            endX, endY, 0,
-            endX, endY, CONFIG.TILE_SIZE * 0.4
-        );
-        
-        endGradient.addColorStop(0, 'rgba(255, 0, 0, 0.7)');
-        endGradient.addColorStop(1, 'rgba(100, 0, 0, 0.3)');
-        
-        this.ctx.fillStyle = endGradient;
+        this.ctx.arc(endCenterX, endCenterY, CONFIG.TILE_SIZE * 0.35, 0, Math.PI * 2);
         this.ctx.fill();
         
         this.ctx.restore();
@@ -877,7 +805,7 @@ class Game {
                     return;
                 }
                 
-                enemy.color = '#FF00FF'; // Bright magenta for high visibility
+                enemy.color = '#D73BFF'; // Bright purple for high visibility on light background
                 enemy.size = CONFIG.TILE_SIZE / 2.2; // Make it larger
                 console.log("Test enemy created with color:", enemy.color);
                 this.enemies.push(enemy);
