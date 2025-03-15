@@ -2599,8 +2599,38 @@ class Game {
      * Draw visual rhythm grid in the background
      */
     drawRhythmGrid() {
-        // Completely empty - do absolutely nothing
-        // This method is intentionally left empty to prevent any animation or visual effects
+        // Commenting out the entire rhythm grid to stop any animation effects
+        // This will make the game path completely static
+        
+        // If you want the dots back, uncomment this code:
+        /*
+        // Use a static dot size
+        const dotSize = 1.5; // Fixed size
+        
+        this.ctx.fillStyle = 'rgba(220, 180, 220, 0.15)'; // Light pink-purple dots
+        
+        // Draw dots only within the game grid area - with proper grid scaling
+        const gridWidth = CONFIG.GRID_WIDTH * CONFIG.TILE_SIZE;
+        const gridHeight = CONFIG.GRID_HEIGHT * CONFIG.TILE_SIZE;
+        const spacing = CONFIG.TILE_SIZE;
+        
+        // Draw dots aligned with the grid cells
+        for (let x = 0; x < CONFIG.GRID_WIDTH; x++) {
+            for (let y = 0; y < CONFIG.GRID_HEIGHT; y++) {
+                // Calculate dot position at cell center
+                const dotX = x * CONFIG.TILE_SIZE + CONFIG.TILE_SIZE/2;
+                const dotY = y * CONFIG.TILE_SIZE + CONFIG.TILE_SIZE/2;
+                
+                // Don't draw dots on the path
+                const isPath = CONFIG.PATH.some(p => p[0] === x && p[1] === y);
+                if (!isPath) {
+                    this.ctx.beginPath();
+                    this.ctx.arc(dotX, dotY, dotSize, 0, Math.PI * 2);
+                    this.ctx.fill();
+                }
+            }
+        }
+        */
     }
     
     /**

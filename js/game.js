@@ -381,34 +381,14 @@ class Game {
     }
     
     /**
-     * Draw background effects that respond to music
+     * Draw background - NO ANIMATIONS
      */
     drawBackground() {
-        // Create a grid of visual rhythm points
-        this.drawRhythmGrid();
-        
-        // Use a static background instead of a pulsing one
-        // Calculate the center of the game grid
-        const gridCenterX = CONFIG.GRID_WIDTH * CONFIG.TILE_SIZE / 2;
-        const gridCenterY = CONFIG.GRID_HEIGHT * CONFIG.TILE_SIZE / 2;
-        
-        // Create a static gradient for the background
-        const gradient = this.ctx.createRadialGradient(
-            gridCenterX, gridCenterY, 0,
-            gridCenterX, gridCenterY, CONFIG.GRID_WIDTH * CONFIG.TILE_SIZE
-        );
-        
-        // Very subtle pink gradient for the background
-        gradient.addColorStop(0, 'rgba(255, 235, 245, 0.3)'); // Soft pink center
-        gradient.addColorStop(1, 'rgba(255, 240, 245, 0.1)'); // Almost transparent pink at edges
-        
-        this.ctx.fillStyle = gradient;
+        // Just fill with a solid color - no gradients, no animations, nothing that could pulse
+        this.ctx.fillStyle = '#FFF0F5'; // Simple solid light pink
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
         
-        // Draw rhythmic pulse waves from towers (only when towers are active)
-        if (this.towers.some(tower => tower.active)) {
-            this.drawTowerPulses();
-        }
+        // Completely removed all rhythm grid, pulses, or any animated elements
     }
     
     /**
@@ -576,49 +556,39 @@ class Game {
      * @private
      */
     _drawPath(offsetX, offsetY) {
-        // Fill the entire path with a solid color
+        // Simple, extremely basic path drawing with NO animations or gradients
         this.ctx.save();
         
-        // Create a path for filling (we'll use solid rectangles instead of strokes)
+        // Draw completely plain rectangles for each path tile
         for (const [x, y] of CONFIG.PATH) {
-            // Draw a filled rectangle for each path tile
-            this.ctx.fillStyle = 'rgba(230, 200, 230, 0.8)'; // Solid light pink path
+            // Solid pink with no transparency 
+            this.ctx.fillStyle = '#FFD0E0'; // Solid light pink - NO rgba() to prevent any chance of animation
             this.ctx.fillRect(
-                x * CONFIG.TILE_SIZE + 2, 
-                y * CONFIG.TILE_SIZE + 2, 
-                CONFIG.TILE_SIZE - 4, 
-                CONFIG.TILE_SIZE - 4
-            );
-            
-            // Add a subtle border
-            this.ctx.strokeStyle = 'rgba(200, 180, 220, 0.9)';
-            this.ctx.lineWidth = 1;
-            this.ctx.strokeRect(
-                x * CONFIG.TILE_SIZE + 2, 
-                y * CONFIG.TILE_SIZE + 2, 
-                CONFIG.TILE_SIZE - 4, 
-                CONFIG.TILE_SIZE - 4
+                x * CONFIG.TILE_SIZE, 
+                y * CONFIG.TILE_SIZE, 
+                CONFIG.TILE_SIZE, 
+                CONFIG.TILE_SIZE
             );
         }
         
-        // Draw start point (entry) - in light blue
+        // Draw a simple blue circle at start
         const [startX, startY] = CONFIG.PATH[0];
         const startCenterX = startX * CONFIG.TILE_SIZE + CONFIG.TILE_SIZE / 2;
         const startCenterY = startY * CONFIG.TILE_SIZE + CONFIG.TILE_SIZE / 2;
         
-        this.ctx.fillStyle = 'rgba(150, 200, 255, 0.9)'; // Solid blue color
+        this.ctx.fillStyle = '#80A0FF'; // Solid blue - NO transparency
         this.ctx.beginPath();
-        this.ctx.arc(startCenterX, startCenterY, CONFIG.TILE_SIZE * 0.35, 0, Math.PI * 2);
+        this.ctx.arc(startCenterX, startCenterY, CONFIG.TILE_SIZE * 0.3, 0, Math.PI * 2);
         this.ctx.fill();
         
-        // Draw endpoint (base to defend) - in pink
+        // Draw a simple pink circle at end
         const [endX, endY] = CONFIG.PATH[CONFIG.PATH.length - 1];
         const endCenterX = endX * CONFIG.TILE_SIZE + CONFIG.TILE_SIZE / 2;
         const endCenterY = endY * CONFIG.TILE_SIZE + CONFIG.TILE_SIZE / 2;
         
-        this.ctx.fillStyle = 'rgba(255, 140, 200, 0.9)'; // Solid pink color
+        this.ctx.fillStyle = '#FF80B0'; // Solid pink - NO transparency
         this.ctx.beginPath();
-        this.ctx.arc(endCenterX, endCenterY, CONFIG.TILE_SIZE * 0.35, 0, Math.PI * 2);
+        this.ctx.arc(endCenterX, endCenterY, CONFIG.TILE_SIZE * 0.3, 0, Math.PI * 2);
         this.ctx.fill();
         
         this.ctx.restore();
